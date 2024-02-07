@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Sign In to Pinterest</h1>
+      <form action="/login" method="POST">
+        <input type="text" name="username" placeholder="Username">
+          <input type="password" name="password" placeholder="Password">
+          <input type="submit" value="Log In">
+      </form>
+      <a href="/">Not an accout ? Sign Up</a>
+  </div>
+  </body>
+</html>
