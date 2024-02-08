@@ -4,9 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Welcome to Profile</h1>
-    <a href="/logout">Log out</a>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Pinterest</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/feed">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="#">Link</a>
+              </li>
+            </ul>
+      </div>
+      <div>
+        <a href="/profile" class="btn btn-secondary"><%= user.username %></a>
+      <a href="/logout" class="btn btn-secondary rounded">Logout</a>
+      </div>
+        </div>
+      </nav>
+      <div class="border border-primary rounded-3 text-center p-4 mx-auto my-5" style="width: 18rem;">
+        <img src="https://i.pinimg.com/280x280_RS/d1/8d/dd/d18ddd80f702e952825ee68cb6afcbd5.jpg" 
+        class="card-img-top rounded-circle" style="width:10rem">
+        <div class="card-body">
+          <h5 class="card-title text-center m-2"><%= user.username %></h5>
+          <p class="text-center m-2"><%= user.email %></p>
+          <a href="#" class="btn btn-secondary rounded-5">Share</a>
+          <a href="#" class="btn btn-secondary rounded-5">Edit Profile</a>
+
+          
+          <form action="/upload" method="post" 
+          enctype="multipart/form-data" class="my-2">
+          <input type="text" name="filecaption">
+           <input type="file" name="file" class="border border-success rounded-2 p-2" style="width: 15rem;">
+           <input class="btn btn-primary mt-4" type="submit" value="Upload">
+          </form>
+        </div>
+      </div>
+
+      <div class="container  bg-danger flex flex-wrap">
+        <% user.posts.forEach((post)=>{%>
+          <div class="card-body">
+            <img src="/images/uploads/<%= post.image %>" style="width:12rem">
+            <h5 class="card-title"><%= post.posttext%></h5>
+          </div>
+          <% })%>
+      </div>
 </body>
 </html>

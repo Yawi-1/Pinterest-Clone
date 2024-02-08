@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>LogIn</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
     <div class="container">
       <h1>Sign In to Pinterest</h1>
+      <% if(error.length > 0) {%>
+         <p class="error"><%= error %></p>
+      <% }%>
+
       <form action="/login" method="POST">
         <input type="text" name="username" placeholder="Username">
           <input type="password" name="password" placeholder="Password">
